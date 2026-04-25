@@ -5,7 +5,7 @@
 
 /* ── CSS Variables (edit these to retheme the site) ── */
 :root{
-  --bg:#0b0b0d;
+  --bg:#101010;
   --text:#e6eef2;
   --muted:#9aa6ad;
   --cyan:#00c4ea;
@@ -297,8 +297,8 @@ footer{margin-top:80px;margin-bottom:0;padding-bottom:48px;text-align:center;col
   transition:background 0.18s,border-color 0.18s;
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
 }
-#lb-inner-prev{left:-22px}
-#lb-inner-next{right:-22px}
+#lb-inner-prev{left:-76px}
+#lb-inner-next{right:-76px}
 #lb-inner-prev:hover,#lb-inner-next:hover{
   background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.5);
 }
@@ -357,8 +357,8 @@ footer{margin-top:80px;margin-bottom:0;padding-bottom:48px;text-align:center;col
   .hero-visual{min-height:300px;border-radius:14px}
 
   /* Section dividers + ticker sections */
-  .section-divider{margin:0 0 28px}
-  .projects{margin-top:44px}
+  .section-divider{margin:0 0 36px}
+  .projects{margin-top:60px}
   .projects-header{margin-bottom:14px}
   .projects-h{font-size:21px}
   .carousel{padding:12px 8px}
@@ -366,8 +366,8 @@ footer{margin-top:80px;margin-bottom:0;padding-bottom:48px;text-align:center;col
   .carousel .card{min-width:220px;flex:0 0 220px}
 
   /* Skills */
-  .skills-section{margin-top:52px}
-  .skills-group{margin-bottom:32px}
+  .skills-section{margin-top:68px}
+  .skills-group{margin-bottom:40px}
   .skills-group-title{margin-bottom:14px;font-size:10.5px}
   .tools-row{gap:10px}
   .tool{width:84px;height:80px;padding:12px 8px;border-radius:12px}
@@ -379,12 +379,13 @@ footer{margin-top:80px;margin-bottom:0;padding-bottom:48px;text-align:center;col
   .edu-item{margin-bottom:16px}
   .edu-title{font-size:14.5px}
   .edu-meta{font-size:12.5px}
-  footer{margin-top:52px;padding-bottom:40px;font-size:12px}
+  footer{margin-top:68px;padding-bottom:40px;font-size:12px}
 
-  /* Lightbox on mobile: hide outer arrows (swipe navigates), shrink inner arrows */
-  #lb-outer-prev,#lb-outer-next{display:none !important}
-  #lb-inner-prev,#lb-inner-next{width:36px;height:36px;font-size:16px}
-  #lb-inner-prev{left:-18px}
-  #lb-inner-next{right:-18px}
+  /* Lightbox on mobile: only outer arrows (consistent across carousel + single modes)
+     Inner arrows hidden — swipe handles slide navigation within a carousel */
+  #lb-inner-prev,#lb-inner-next{display:none !important}
+  #lb-outer-prev,#lb-outer-next{width:42px;height:42px;font-size:15px}
+  #lb-outer-prev{left:12px}
+  #lb-outer-next{right:12px}
   #lb-close{top:16px;right:16px;width:36px;height:36px;font-size:16px}
 }

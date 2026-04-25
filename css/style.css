@@ -8,7 +8,7 @@
   --bg:#0b0b0d;
   --text:#e6eef2;
   --muted:#9aa6ad;
-  --cyan:#06b6d4;
+  --cyan:#00c4ea;
   --radius:20px;
 }
 
@@ -16,7 +16,7 @@
 html,body{height:100%;margin:0}
 body{
   font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
-  background: radial-gradient(1200px 600px at 10% 10%, rgba(6,182,212,0.06), transparent 8%),
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(0,196,234,0.06), transparent 8%),
               radial-gradient(900px 500px at 90% 90%, rgba(0,0,0,0.6), transparent 20%),
               var(--bg);
   color:var(--text);
@@ -131,7 +131,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  background:radial-gradient(600px 300px at 85% 40%, rgba(6,182,212,0.12), transparent 10%),
+  background:radial-gradient(600px 300px at 85% 40%, rgba(0,196,234,0.12), transparent 10%),
              linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.35));
   border:1px solid rgba(255,255,255,0.04);
   min-height:440px;
@@ -166,9 +166,19 @@ body{
   background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);
   box-shadow:0 18px 40px rgba(2,6,23,0.55);
-  min-width:280px;flex:0 0 280px;
+  min-width:270px;flex:0 0 270px;aspect-ratio:4/5;position:relative;cursor:pointer;
 }
-.card img{width:100%;height:280px;object-fit:cover;display:block;cursor:pointer}
+.card img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* Ticker card slide-count dots */
+.card-dots{
+  position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
+  display:flex;gap:4px;pointer-events:none;
+}
+.card-dot{
+  width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.28);
+}
+.card-dot.active{background:rgba(255,255,255,0.92);}
 
 /* ── SKILLS (no card, open layout) ── */
 .skills-section{
@@ -194,11 +204,11 @@ body{
   padding:14px 10px;border-radius:12px;
   background:rgba(255,255,255,0.02);
   border:1px solid rgba(255,255,255,0.05);
-  width:96px;height:84px;justify-content:center;
+  width:96px;height:88px;justify-content:center;
   transition:border-color 0.2s, background 0.2s;
 }
 .tool:hover{border-color:rgba(255,255,255,0.12);background:rgba(255,255,255,0.04)}
-.tool svg{width:28px;height:28px}
+.tool svg,.tool img{width:32px;height:32px;object-fit:contain;flex-shrink:0}
 .tool-label{font-size:10.5px;color:var(--muted);text-align:center;line-height:1.3}
 
 .skill-tags{display:flex;flex-wrap:wrap;gap:9px}
@@ -212,7 +222,7 @@ body{
   font-weight:400;
   transition:border-color 0.2s, color 0.2s;
 }
-.skill-tag:hover{border-color:rgba(6,182,212,0.3);color:var(--text)}
+.skill-tag:hover{border-color:rgba(0,196,234,0.3);color:var(--text)}
 
 .lang-list{display:flex;gap:24px;flex-wrap:wrap}
 .lang-chip{
@@ -241,16 +251,40 @@ footer{margin-top:60px;margin-bottom:0;padding-bottom:48px;text-align:center;col
 #lightbox .close-btn{
   position:absolute;top:18px;right:18px;
   background:rgba(255,255,255,0.06);border-radius:8px;
-  padding:8px 10px;color:#fff;border:0;font-size:20px;cursor:pointer;
+  padding:8px 10px;color:#fff;border:0;font-size:20px;cursor:pointer;z-index:2;
 }
-#lightbox img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 20px 50px rgba(0,0,0,0.7)}
-.lightbox-btn{
+
+/* Solid carousel-switch arrows (far edges) */
+.lb-carousel-btn{
   position:absolute;top:50%;transform:translateY(-50%);
-  background:rgba(0,0,0,0.45);border:0;color:#fff;
-  padding:12px 14px;border-radius:8px;cursor:pointer;font-size:20px;
+  background:rgba(255,255,255,0.12);border:none;border-radius:10px;
+  color:#fff;width:52px;height:52px;font-size:20px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background 0.18s;z-index:2;
 }
-#lightbox-prev{left:18px}
-#lightbox-next{right:18px}
+.lb-carousel-btn:hover{background:rgba(255,255,255,0.24);}
+#lb-carousel-prev{left:24px}
+#lb-carousel-next{right:24px}
+
+/* Center layout */
+.lb-wrapper{
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+}
+/* Lightbox image — 4:5 aspect ratio */
+#lightbox-image{
+  height:75vh;width:auto;aspect-ratio:4/5;
+  object-fit:cover;border-radius:12px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.7);display:block;
+}
+
+
+/* Slide indicator dots */
+.lb-dots{display:flex;gap:7px;justify-content:center;}
+.lb-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:rgba(255,255,255,0.22);transition:background 0.18s;
+}
+.lb-dot.active{background:#fff;}
 
 /* ── BREAKPOINTS ── */
 @media(min-width:1280px){body{padding:96px 96px}}
@@ -260,11 +294,15 @@ footer{margin-top:60px;margin-bottom:0;padding-bottom:48px;text-align:center;col
   .hero{grid-template-columns:1fr;gap:22px}
   .hero-left{min-height:unset}
   .hero-visual{min-height:360px}
-  .carousel .card{min-width:220px;flex:0 0 220px}
+  .carousel .card{min-width:230px;flex:0 0 230px}
 }
 @media(max-width:640px){
-  .carousel .card{min-width:180px;flex:0 0 180px}
+  .carousel .card{min-width:185px;flex:0 0 185px}
   .bigname{font-size:54px}
   .hero-visual{min-height:280px}
   body{padding:28px 18px}
+  #lightbox-image{height:auto;width:calc(100vw - 140px)}
+  .lb-carousel-btn{width:38px;height:38px;font-size:16px}
+  #lb-carousel-prev{left:8px}
+  #lb-carousel-next{right:8px}
 }

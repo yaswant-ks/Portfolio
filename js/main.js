@@ -1,121 +1,283 @@
 /* ============================================================
-   Portfolio — Yogesh Pandian
-   main.js
-
-   HOW TO ADD / EDIT PROJECTS:
-   - Add your image files to:  images/projects/
-   - Update the projectItems array below with the correct src path and name
-   - Each entry: { name: 'Project Title', src: 'images/projects/your-file.jpg' }
+   Portfolio — Yaswant Sreenivasan  |  main.js
    ============================================================ */
 
-const projectItems = [
-  { name: 'Business Presentation',       src: 'images/projects/Business Presentation.jpg.jpeg' },
-  { name: 'Data and Report Presentation',src: 'images/projects/Data and Report Presentation.jpg.jpeg' },
-  { name: 'Educational Presentation',    src: 'images/projects/Educational Presentation.jpg.jpeg' },
-  { name: 'Food Ad',                      src: 'images/projects/Foodad-RecoveredNew.jpg.jpeg' },
-  { name: 'Social Post',                  src: 'images/projects/NEWpost7.jpg.jpeg' },
-  { name: 'Pitch Deck Presentation',     src: 'images/projects/Pitch Deck Presentation.jpg.jpeg' },
-  { name: 'Thief of Heart',              src: 'images/projects/Thiefofheart.jpg.jpeg' },
-  { name: 'Art of War',                  src: 'images/projects/artofwar.jpg.jpeg' },
-  { name: 'Axe Ad',                      src: 'images/projects/axead.jpg.jpeg' },
-  { name: 'Cars',                         src: 'images/projects/cars.jpg.jpeg' },
-  { name: 'Class Perfume',               src: 'images/projects/classperfume.jpg.jpeg' },
-  { name: 'Instagram Post',              src: 'images/projects/insta+vepost111.jpg.jpeg' },
-  { name: 'Layer Styles Mask',           src: 'images/projects/layeratylesmask1.jpg.jpeg' },
-  { name: 'Leo 100th',                   src: 'images/projects/leo100th.jpg.jpeg' },
-  { name: 'Love Movie Poster',           src: 'images/projects/lovemovieposter.jpg.jpeg' },
-  { name: 'Majestic Sips',              src: 'images/projects/majesticsipsnew.jpg.jpeg' },
-  { name: 'New Shoe',                    src: 'images/projects/newshoe2.jpg.jpeg' },
-  { name: 'Nike',                         src: 'images/projects/nike.jpg.jpeg' },
-  { name: 'Royal Elixir Ad',            src: 'images/projects/royalelixirad.jpg.jpeg' },
-  { name: 'Shoe Sale',                   src: 'images/projects/shoesaleend2.jpg.jpeg' },
-  { name: 'Thriller',                    src: 'images/projects/thriller.jpg.jpeg' },
-  { name: 'Wars',                         src: 'images/projects/wars2.jpg.jpeg' },
-  { name: 'Watch Ad',                    src: 'images/projects/watchadee.jpg.jpeg' }
+/* ── Ticker 1: Carousel groups ── */
+const carousels = [
+  {
+    name: 'Danush',
+    images: [
+      'images/carosuels/1 Danush- (1).jpg',
+      'images/carosuels/1 Danush- (2).jpg',
+      'images/carosuels/1 Danush- (3).jpg',
+      'images/carosuels/1 Danush- (4).jpg',
+      'images/carosuels/1 Danush- (5).jpg',
+      'images/carosuels/1 Danush- (6).jpg',
+      'images/carosuels/1 Danush- (7).jpg',
+    ]
+  },
+  {
+    name: 'Actress',
+    images: [
+      'images/carosuels/2 actress  (1).jpg',
+      'images/carosuels/2 actress  (2).jpg',
+      'images/carosuels/2 actress  (3).jpg',
+      'images/carosuels/2 actress  (4).jpg',
+      'images/carosuels/2 actress  (5).jpg',
+      'images/carosuels/2 actress  (6).jpg',
+      'images/carosuels/2 actress  (7).jpg',
+      'images/carosuels/2 actress  (8).jpg',
+      'images/carosuels/2 actress  (9).jpg',
+    ]
+  },
+  {
+    name: 'Soori',
+    images: [
+      'images/carosuels/3 Soori  (1).jpg',
+      'images/carosuels/3 Soori  (2).jpg',
+      'images/carosuels/3 Soori  (3).jpg',
+      'images/carosuels/3 Soori  (4).jpg',
+      'images/carosuels/3 Soori  (5).jpg',
+      'images/carosuels/3 Soori  (6).jpg',
+    ]
+  },
+  {
+    name: 'Rajini',
+    images: [
+      'images/carosuels/4 rajini- (1).jpg',
+      'images/carosuels/4 rajini- (2).jpg',
+      'images/carosuels/4 rajini- (3).jpg',
+      'images/carosuels/4 rajini- (4).jpg',
+      'images/carosuels/4 rajini- (5).jpg',
+      'images/carosuels/4 rajini- (6).jpg',
+      'images/carosuels/4 rajini- (7).jpg',
+      'images/carosuels/4 rajini- (8).jpg',
+      'images/carosuels/4 rajini- (9).jpg',
+      'images/carosuels/4 rajini- (10).jpg',
+    ]
+  },
+  {
+    name: 'Simbu',
+    images: [
+      'images/carosuels/5 simbu  (1).jpg',
+      'images/carosuels/5 simbu  (2).jpg',
+      'images/carosuels/5 simbu  (3).jpg',
+      'images/carosuels/5 simbu  (4).jpg',
+      'images/carosuels/5 simbu  (5).jpg',
+      'images/carosuels/5 simbu  (6).jpg',
+      'images/carosuels/5 simbu  (7).jpg',
+      'images/carosuels/5 simbu  (8).jpg',
+    ]
+  },
+  {
+    name: 'Icons',
+    images: [
+      'images/carosuels/6 icons (1).jpg',
+      'images/carosuels/6 icons (2).jpg',
+      'images/carosuels/6 icons (3).jpg',
+      'images/carosuels/6 icons (4).jpg',
+      'images/carosuels/6 icons (5).jpg',
+      'images/carosuels/6 icons (6).jpg',
+      'images/carosuels/6 icons (7).jpg',
+      'images/carosuels/6 icons (8).jpg',
+      'images/carosuels/6 icons (9).jpg',
+      'images/carosuels/6 icons (10).jpg',
+    ]
+  },
+  {
+    name: 'Ram',
+    images: [
+      'images/carosuels/7 ram  (1).jpg',
+      'images/carosuels/7 ram  (2).jpg',
+      'images/carosuels/7 ram  (3).jpg',
+      'images/carosuels/7 ram  (4).jpg',
+      'images/carosuels/7 ram  (5).jpg',
+      'images/carosuels/7 ram  (6).jpg',
+      'images/carosuels/7 ram  (7).jpg',
+      'images/carosuels/7 ram  (8).jpg',
+    ]
+  },
+  {
+    name: 'Metaphor',
+    images: [
+      'images/carosuels/8 metaphor  (1).jpg',
+      'images/carosuels/8 metaphor  (2).jpg',
+      'images/carosuels/8 metaphor  (3).jpg',
+      'images/carosuels/8 metaphor  (4).jpg',
+      'images/carosuels/8 metaphor  (5).jpg',
+      'images/carosuels/8 metaphor  (6).jpg',
+      'images/carosuels/8 metaphor  (7).jpg',
+      'images/carosuels/8 metaphor  (8).jpg',
+      'images/carosuels/8 metaphor  (9).jpg',
+      'images/carosuels/8 metaphor  (10).jpg',
+    ]
+  },
 ];
 
-/* Placeholder shown when a project image is missing */
-const PLACEHOLDER_SRC = 'https://picsum.photos/1600/1000?grayscale';
+/* ── Ticker 2: Single designs ── */
+const singleItems = [
+  { name: 'Chocos',              src: 'images/designs/Chocos.jpg' },
+  { name: 'Himalaya Men',        src: 'images/designs/Himalaya men.jpg' },
+  { name: 'MSD Edit',            src: 'images/designs/MSd edit copy.jpg' },
+  { name: 'Poster Edit',         src: 'images/designs/Poster edit trial.jpg' },
+  { name: 'Sq Ad 10',            src: 'images/designs/Sq ad 10 copy.jpg' },
+  { name: 'Sq Ad 11',            src: 'images/designs/Sq ad 11 copy.jpg' },
+  { name: 'Apple Edit',          src: 'images/designs/apple edit.jpg' },
+  { name: 'Coke Ad',             src: 'images/designs/coke ad.jpg' },
+  { name: 'Momster Edit',        src: 'images/designs/momster edit.jpg' },
+  { name: 'Orange Edit',         src: 'images/designs/orange edit.jpg' },
+  { name: 'Tata Salt Ad',        src: 'images/designs/tata salt ad copy ii.jpg' },
+];
 
-function createCardElement(item, index) {
+const PLACEHOLDER_SRC = 'https://picsum.photos/800/1000?grayscale';
+
+/* ── Card builders ── */
+function createCarouselCard(carousel, carouselIndex) {
   const card = document.createElement('div');
   card.className = 'card';
+  card.tabIndex = 0;
+
   const img = document.createElement('img');
-  img.src = item.src;
-  img.alt = item.name;
-  img.onerror = function() { this.src = PLACEHOLDER_SRC; this.onerror = null; };
-  img.tabIndex = 0;
+  img.src = carousel.images[0];
+  img.alt = carousel.name;
+  img.onerror = function () { this.src = PLACEHOLDER_SRC; this.onerror = null; };
   card.appendChild(img);
-  img.addEventListener('click', function(e) { e.stopPropagation(); openLightboxAt(index); });
-  img.addEventListener('keydown', (e) => { if (e.key === 'Enter') openLightboxAt(index); });
+
+  const dotsEl = document.createElement('div');
+  dotsEl.className = 'card-dots';
+  carousel.images.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.className = 'card-dot' + (i === 0 ? ' active' : '');
+    dotsEl.appendChild(dot);
+  });
+  card.appendChild(dotsEl);
+
+  card.addEventListener('click', () => openLightbox(carousel.images, 0));
+  card.addEventListener('keydown', e => { if (e.key === 'Enter') openLightbox(carousel.images, 0); });
   return card;
 }
 
-/* Build carousel (duplicated for infinite loop effect) */
-const track = document.getElementById('carousel-track');
-for (let pass = 0; pass < 2; pass++) {
-  projectItems.forEach((item, idx) => { track.appendChild(createCardElement(item, idx)); });
+function createSingleCard(item, index, allSrcs) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.tabIndex = 0;
+
+  const img = document.createElement('img');
+  img.src = item.src;
+  img.alt = item.name;
+  img.onerror = function () { this.src = PLACEHOLDER_SRC; this.onerror = null; };
+  card.appendChild(img);
+
+  card.addEventListener('click', () => openLightbox(allSrcs, index));
+  card.addEventListener('keydown', e => { if (e.key === 'Enter') openLightbox(allSrcs, index); });
+  return card;
 }
 
-/* ── RAF-based carousel motion ──
-   Speed is lerped so hover slow-down and resume are seamless.
-   NORMAL_SPEED  = px moved per frame at 60 fps (increase to go faster)
-   HOVER_SPEED   = px per frame while hovered (decrease to go slower)
-   LERP_FACTOR   = how quickly speed transitions (0 = instant, 1 = never) */
-const carousel = document.getElementById('projects-carousel');
+/* ── Build tickers ── */
+const track1 = document.getElementById('carousel-track');
+for (let pass = 0; pass < 2; pass++) {
+  carousels.forEach((c, i) => track1.appendChild(createCarouselCard(c, i)));
+}
 
+const allSingleSrcs = singleItems.map(i => i.src);
+const track2 = document.getElementById('carousel-track-2');
+if (singleItems.length > 0) {
+  for (let pass = 0; pass < 2; pass++) {
+    singleItems.forEach((item, i) => track2.appendChild(createSingleCard(item, i, allSingleSrcs)));
+  }
+}
+
+/* ── RAF animation — two independent tickers ── */
 const NORMAL_SPEED = 1.2;
-const HOVER_SPEED  = 0.08;
+const HOVER_SPEED  = 0.1;
 const LERP_FACTOR  = 0.04;
 
-let position    = 0;
-let curSpeed    = NORMAL_SPEED;
-let targetSpeed = NORMAL_SPEED;
-let halted      = false;   // true when paused for visibility / lightbox / blur
+const t1 = {
+  el: document.getElementById('projects-carousel'),
+  track: track1,
+  pos: 0,
+  half: 0,
+  cur: NORMAL_SPEED,
+  target: NORMAL_SPEED,
+  dir: -1,         // left
+};
+const NORMAL_SPEED_2 = 0.8;
 
-carousel.addEventListener('mouseenter', () => { targetSpeed = HOVER_SPEED; });
-carousel.addEventListener('mouseleave', () => { targetSpeed = NORMAL_SPEED; });
+const t2 = {
+  el: document.getElementById('projects-carousel-2'),
+  track: track2,
+  pos: null,       // set after halfWidth measured (starts right-to-left visually)
+  half: 0,
+  cur: NORMAL_SPEED_2,
+  target: NORMAL_SPEED_2,
+  dir: 1,          // right
+};
 
-let halfWidth = 0;
-function cacheHalfWidth() { halfWidth = track.scrollWidth / 2; }
-// Measure after images have had a chance to load
-requestAnimationFrame(() => requestAnimationFrame(cacheHalfWidth));
-window.addEventListener('resize', cacheHalfWidth);
+t1.el.addEventListener('mouseenter', () => { t1.target = HOVER_SPEED; });
+t1.el.addEventListener('mouseleave', () => { t1.target = NORMAL_SPEED; });
+t2.el.addEventListener('mouseenter', () => { t2.target = HOVER_SPEED; });
+t2.el.addEventListener('mouseleave', () => { t2.target = NORMAL_SPEED_2; });
+
+let halted = false;
+
+function cacheWidths() {
+  t1.half = t1.track.scrollWidth / 2;
+  t2.half = t2.track.scrollWidth / 2;
+  if (t2.pos === null && t2.half > 0) t2.pos = -t2.half; // start so right-moving content is visible
+}
+requestAnimationFrame(() => requestAnimationFrame(cacheWidths));
+window.addEventListener('resize', cacheWidths);
+
+function tickTicker(t) {
+  if (halted || t.pos === null) return;
+  t.cur += (t.target - t.cur) * LERP_FACTOR;
+  t.pos += t.dir * t.cur;
+  if (t.half > 0) {
+    if (t.dir === -1 && t.pos <= -t.half) t.pos += t.half; // left-moving loop
+    if (t.dir ===  1 && t.pos >= 0)       t.pos -= t.half; // right-moving loop
+  }
+  t.track.style.transform = `translateX(${t.pos}px)`;
+}
 
 function tick() {
-  if (!halted) {
-    curSpeed += (targetSpeed - curSpeed) * LERP_FACTOR;
-    position -= curSpeed;
-    if (halfWidth > 0 && position <= -halfWidth) position += halfWidth;
-    track.style.transform = `translateX(${position}px)`;
-  }
+  tickTicker(t1);
+  tickTicker(t2);
   requestAnimationFrame(tick);
 }
 requestAnimationFrame(tick);
 
-function pauseCarousel()  { halted = true; }
-function resumeCarousel() { halted = false; }
+function pauseTickers()  { halted = true; }
+function resumeTickers() { halted = false; }
 
 /* ── LIGHTBOX ── */
 const lightbox      = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightbox-image');
 const closeBtn      = document.getElementById('lightbox-close');
-const prevBtn       = document.getElementById('lightbox-prev');
-const nextBtn       = document.getElementById('lightbox-next');
-let currentIndex = 0;
+const lbDotsEl      = document.getElementById('lb-dots');
+const lbPrevBtn     = document.getElementById('lb-carousel-prev');
+const lbNextBtn     = document.getElementById('lb-carousel-next');
 
-function showLightboxImage() {
-  const item = projectItems[currentIndex];
-  lightboxImage.src = item.src;
-  lightboxImage.alt = item.name;
+let currentImages = [];
+let currentIndex  = 0;
+
+function updateLightboxDisplay() {
+  lightboxImage.src = currentImages[currentIndex];
+
+  lbDotsEl.innerHTML = '';
+  currentImages.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.className = 'lb-dot' + (i === currentIndex ? ' active' : '');
+    lbDotsEl.appendChild(dot);
+  });
 }
 
-function openLightboxAt(index) {
-  currentIndex = ((index % projectItems.length) + projectItems.length) % projectItems.length;
-  showLightboxImage();
+function openLightbox(images, startIndex) {
+  currentImages = images;
+  currentIndex  = startIndex;
+  updateLightboxDisplay();
   lightbox.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
-  pauseCarousel();
+  pauseTickers();
   document.addEventListener('keydown', lightboxKeyHandler);
   closeBtn.focus();
 }
@@ -123,47 +285,38 @@ function openLightboxAt(index) {
 function closeLightbox() {
   lightbox.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
-  resumeCarousel();
+  resumeTickers();
   document.removeEventListener('keydown', lightboxKeyHandler);
 }
 
-closeBtn.addEventListener('click', function(e) { e.stopPropagation(); closeLightbox(); });
-lightbox.addEventListener('click', closeLightbox);
-lightboxImage.addEventListener('click', (e) => e.stopPropagation());
+lbPrevBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+  updateLightboxDisplay();
+});
+lbNextBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  updateLightboxDisplay();
+});
 
-prevBtn.addEventListener('click', function(e) {
-  e.stopPropagation();
-  currentIndex = (currentIndex - 1 + projectItems.length) % projectItems.length;
-  showLightboxImage();
-});
-nextBtn.addEventListener('click', function(e) {
-  e.stopPropagation();
-  currentIndex = (currentIndex + 1) % projectItems.length;
-  showLightboxImage();
-});
+closeBtn.addEventListener('click', e => { e.stopPropagation(); closeLightbox(); });
+lightbox.addEventListener('click', closeLightbox);
 
 function lightboxKeyHandler(e) {
-  if (e.key === 'ArrowRight') {
-    currentIndex = (currentIndex + 1) % projectItems.length;
-    showLightboxImage();
-  } else if (e.key === 'ArrowLeft') {
-    currentIndex = (currentIndex - 1 + projectItems.length) % projectItems.length;
-    showLightboxImage();
-  } else if (e.key === 'Escape') {
-    closeLightbox();
-  }
+  const n = currentImages.length;
+  if (e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % n; updateLightboxDisplay(); }
+  else if (e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + n) % n; updateLightboxDisplay(); }
+  else if (e.key === 'Escape') { closeLightbox(); }
 }
 
-/* Pause carousel when scrolled out of view */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) resumeCarousel(); else pauseCarousel();
-  });
-}, { threshold: 0.2 });
-observer.observe(carousel);
+/* ── Pause when out of view / window loses focus ── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) resumeTickers(); else pauseTickers(); });
+}, { threshold: 0.1 });
+observer.observe(t1.el);
 
-window.addEventListener('blur', () => pauseCarousel());
+window.addEventListener('blur', pauseTickers);
 window.addEventListener('focus', () => {
-  if (lightbox.getAttribute('aria-hidden') !== 'false') resumeCarousel();
+  if (lightbox.getAttribute('aria-hidden') !== 'false') resumeTickers();
 });
-

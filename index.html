@@ -177,16 +177,18 @@
     <footer>© 2026 Yaswant Sreenivasan. All rights reserved.</footer>
   </div><!-- /page-wrap -->
 
-  <!-- LIGHTBOX -->
-  <div id="lightbox" aria-hidden="true">
-    <button class="close-btn" id="lightbox-close" aria-label="Close">✕</button>
-    <!-- Solid arrows: switch between carousels -->
-    <button class="lb-carousel-btn" id="lb-carousel-prev" aria-label="Previous project">&#9664;</button>
-    <button class="lb-carousel-btn" id="lb-carousel-next" aria-label="Next project">&#9654;</button>
-    <div class="lb-wrapper" onclick="event.stopPropagation()">
-      <img id="lightbox-image" src="" alt="Preview">
-      <div class="lb-dots" id="lb-dots"></div>
+  <!-- Custom lightbox -->
+  <div id="lb-overlay" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button id="lb-close" aria-label="Close">&#10005;</button>
+    <div id="lb-img-wrap">
+      <div id="lb-spinner"></div>
+      <img id="lb-img" alt="">
+      <div id="lb-dots"></div>
+      <button id="lb-inner-prev" aria-label="Previous slide">&#10094;</button>
+      <button id="lb-inner-next" aria-label="Next slide">&#10095;</button>
     </div>
+    <button id="lb-outer-prev" aria-label="Previous carousel">&#9664;</button>
+    <button id="lb-outer-next" aria-label="Next carousel">&#9654;</button>
   </div>
 
   <!-- Scripts -->

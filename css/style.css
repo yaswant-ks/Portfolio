@@ -146,7 +146,7 @@ body{
 /* ── PROJECTS ── */
 .projects{
   padding:0;
-  margin-top:96px;
+  margin-top:120px;
 }
 .projects-header{display:flex;align-items:center;gap:18px;margin-bottom:18px}
 .projects-h{font-size:26px;margin:0;font-weight:700;color:var(--text)}
@@ -183,11 +183,11 @@ body{
 /* ── SKILLS (no card, open layout) ── */
 .skills-section{
   max-width:2400px;
-  margin:52px auto 0;
+  margin:80px auto 0;
   padding:0 4px;
 }
 
-.skills-group{margin-bottom:40px}
+.skills-group{margin-bottom:52px}
 .skills-group-title{
   font-size:11px;
   font-weight:600;
@@ -236,73 +236,155 @@ body{
 .edu-title{color:var(--text);font-weight:600;margin-bottom:4px;font-size:15px}
 .edu-meta{font-size:13px;color:var(--muted)}
 
-.section-divider{height:1px;background:rgba(255,255,255,0.04);margin:0 0 40px}
+.section-divider{height:1px;background:rgba(255,255,255,0.04);margin:0 0 56px}
 
-footer{margin-top:60px;margin-bottom:0;padding-bottom:48px;text-align:center;color:var(--muted);font-size:13px;opacity:0.7}
+footer{margin-top:80px;margin-bottom:0;padding-bottom:48px;text-align:center;color:var(--muted);font-size:13px;opacity:0.7}
 @media(min-width:1280px){footer{padding-bottom:53px}}
 
-/* ── LIGHTBOX ── */
-#lightbox{
-  display:none;position:fixed;inset:0;z-index:99999;
-  justify-content:center;align-items:center;
-  background:rgba(0,0,0,0.95);padding:18px;
+/* ── Custom Lightbox ── */
+#lb-overlay{
+  display:none;position:fixed;inset:0;z-index:10000;
+  background:rgba(0,0,0,0.90);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  align-items:center;justify-content:center;
 }
-#lightbox[aria-hidden="false"]{display:flex}
-#lightbox .close-btn{
-  position:absolute;top:18px;right:18px;
-  background:rgba(255,255,255,0.06);border-radius:8px;
-  padding:8px 10px;color:#fff;border:0;font-size:20px;cursor:pointer;z-index:2;
+#lb-overlay.open{display:flex}
+
+#lb-img-wrap{
+  position:relative;
+  display:inline-flex;align-items:center;justify-content:center;
 }
 
-/* Solid carousel-switch arrows (far edges) */
-.lb-carousel-btn{
-  position:absolute;top:50%;transform:translateY(-50%);
-  background:rgba(255,255,255,0.12);border:none;border-radius:10px;
-  color:#fff;width:52px;height:52px;font-size:20px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:background 0.18s;z-index:2;
-}
-.lb-carousel-btn:hover{background:rgba(255,255,255,0.24);}
-#lb-carousel-prev{left:24px}
-#lb-carousel-next{right:24px}
-
-/* Center layout */
-.lb-wrapper{
-  display:flex;flex-direction:column;align-items:center;gap:16px;
-}
-/* Lightbox image — 4:5 aspect ratio */
-#lightbox-image{
-  height:75vh;width:auto;aspect-ratio:4/5;
-  object-fit:cover;border-radius:12px;
-  box-shadow:0 20px 50px rgba(0,0,0,0.7);display:block;
+#lb-img{
+  max-height:82vh;max-width:88vw;
+  width:auto;height:auto;display:block;
+  border-radius:12px;object-fit:contain;
+  transition:opacity 0.18s ease;
 }
 
+#lb-spinner{
+  position:absolute;inset:0;display:none;
+  align-items:center;justify-content:center;
+}
+#lb-spinner::after{
+  content:'';width:32px;height:32px;
+  border:2px solid rgba(255,255,255,0.14);
+  border-top-color:rgba(255,255,255,0.72);
+  border-radius:50%;
+  animation:lb-spin 0.7s linear infinite;
+}
+@keyframes lb-spin{to{transform:rotate(360deg)}}
 
-/* Slide indicator dots */
-.lb-dots{display:flex;gap:7px;justify-content:center;}
+#lb-dots{
+  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  display:flex;gap:5px;flex-wrap:wrap;justify-content:center;
+  max-width:90%;pointer-events:none;
+}
 .lb-dot{
-  width:7px;height:7px;border-radius:50%;
-  background:rgba(255,255,255,0.22);transition:background 0.18s;
+  width:5px;height:5px;border-radius:50%;flex-shrink:0;
+  background:rgba(255,255,255,0.28);
+  transition:background 0.2s;
 }
-.lb-dot.active{background:#fff;}
+.lb-dot.active{background:rgba(255,255,255,0.92)}
+
+#lb-inner-prev,#lb-inner-next{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:1;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.22);
+  border-radius:50%;color:#fff;
+  width:44px;height:44px;font-size:20px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background 0.18s,border-color 0.18s;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+#lb-inner-prev{left:-22px}
+#lb-inner-next{right:-22px}
+#lb-inner-prev:hover,#lb-inner-next:hover{
+  background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.5);
+}
+
+#lb-close{
+  position:fixed;top:20px;right:20px;z-index:10001;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:8px;color:#fff;
+  width:40px;height:40px;font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background 0.18s;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+#lb-close:hover{background:rgba(255,255,255,0.18)}
+
+#lb-outer-prev,#lb-outer-next{
+  position:fixed;top:50%;transform:translateY(-50%);z-index:10001;
+  background:rgba(8,8,12,0.55);border:none;border-radius:10px;
+  color:#fff;width:50px;height:50px;font-size:18px;cursor:pointer;
+  display:none; /* JS shows flex when in carousel mode */
+  align-items:center;justify-content:center;
+  transition:background 0.18s;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+#lb-outer-prev{left:16px}
+#lb-outer-next{right:16px}
+#lb-outer-prev:hover,#lb-outer-next:hover{background:rgba(8,8,12,0.80)}
 
 /* ── BREAKPOINTS ── */
 @media(min-width:1280px){body{padding:96px 96px}}
 @media(min-width:1600px){body{padding:106px 106px}}
 
 @media(max-width:1000px){
-  .hero{grid-template-columns:1fr;gap:22px}
+  .hero{grid-template-columns:1fr;gap:28px}
   .hero-left{min-height:unset}
-  .hero-visual{min-height:360px}
+  .hero-visual{min-height:340px}
+  .projects{margin-top:56px}
   .carousel .card{min-width:230px;flex:0 0 230px}
+  .skills-section{margin-top:40px}
+  .skills-group{margin-bottom:32px}
+  .section-divider{margin-bottom:28px}
 }
+
 @media(max-width:640px){
-  .carousel .card{min-width:185px;flex:0 0 185px}
-  .bigname{font-size:54px}
-  .hero-visual{min-height:280px}
-  body{padding:28px 18px}
-  #lightbox-image{height:auto;width:calc(100vw - 140px)}
-  .lb-carousel-btn{width:38px;height:38px;font-size:16px}
-  #lb-carousel-prev{left:8px}
-  #lb-carousel-next{right:8px}
+  /* Page — Apple-style generous breathing room */
+  body{padding:60px 22px 48px}
+
+  /* Hero layout — generous Apple-style breathing zones */
+  .hero{gap:56px;margin-bottom:0;padding-bottom:0}
+  .hero-left{gap:0}
+  .hero-name-block{flex:none;padding:0;margin-top:60px}
+  .meta-row{margin-top:18px;gap:14px;font-size:12.5px}
+  .bigname{font-size:52px;line-height:0.9;letter-spacing:-0.02em}
+  .role{font-size:12.5px;margin-top:12px}
+  .hero-visual{min-height:300px;border-radius:14px}
+
+  /* Section dividers + ticker sections */
+  .section-divider{margin:0 0 28px}
+  .projects{margin-top:44px}
+  .projects-header{margin-bottom:14px}
+  .projects-h{font-size:21px}
+  .carousel{padding:12px 8px}
+  .carousel-track{gap:12px}
+  .carousel .card{min-width:220px;flex:0 0 220px}
+
+  /* Skills */
+  .skills-section{margin-top:52px}
+  .skills-group{margin-bottom:32px}
+  .skills-group-title{margin-bottom:14px;font-size:10.5px}
+  .tools-row{gap:10px}
+  .tool{width:84px;height:80px;padding:12px 8px;border-radius:12px}
+  .tool svg,.tool img{width:28px;height:28px}
+  .tool-label{font-size:9.5px}
+  .skill-tags{gap:8px}
+  .skill-tag{font-size:12px;padding:6px 14px}
+  .lang-list{gap:20px}
+  .edu-item{margin-bottom:16px}
+  .edu-title{font-size:14.5px}
+  .edu-meta{font-size:12.5px}
+  footer{margin-top:52px;padding-bottom:40px;font-size:12px}
+
+  /* Lightbox on mobile: hide outer arrows (swipe navigates), shrink inner arrows */
+  #lb-outer-prev,#lb-outer-next{display:none !important}
+  #lb-inner-prev,#lb-inner-next{width:36px;height:36px;font-size:16px}
+  #lb-inner-prev{left:-18px}
+  #lb-inner-next{right:-18px}
+  #lb-close{top:16px;right:16px;width:36px;height:36px;font-size:16px}
 }
